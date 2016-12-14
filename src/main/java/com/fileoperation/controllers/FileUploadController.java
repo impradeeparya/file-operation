@@ -1,6 +1,6 @@
-package com.fileupload.controllers;
+package com.fileoperation.controllers;
 
-import com.fileupload.services.FileUploader;
+import com.fileoperation.services.FileUploader;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

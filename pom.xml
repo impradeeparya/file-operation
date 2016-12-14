@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.springapp</groupId>
-    <artifactId>file-upload</artifactId>
+    <groupId>com.operation</groupId>
+    <artifactId>file-operation</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>file-upload</name>
+    <name>file-operation</name>
 
     <properties>
         <spring.version>4.3.4.RELEASE</spring.version>
@@ -91,7 +91,7 @@
     </dependencies>
 
     <build>
-        <finalName>file-upload</finalName>
+        <finalName>file-operation</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
