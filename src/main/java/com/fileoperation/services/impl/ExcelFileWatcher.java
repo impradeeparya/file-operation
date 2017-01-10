@@ -1,8 +1,8 @@
 package com.fileoperation.services.impl;
 
+import com.fileoperation.services.FileService;
 import com.fileoperation.services.FileUploader;
 import com.fileoperation.services.FileWatcher;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.concurrent.TimeUnit;
@@ -33,6 +32,9 @@ public class ExcelFileWatcher implements FileWatcher {
     @Qualifier("excelFileUploader")
     private FileUploader excelFileUpload;
 
+    @Autowired
+    private FileService fileService;
+
     @PostConstruct
     public void postConstruct() {
         watch(environment.getProperty("file.watcher.directory.path"));
@@ -49,13 +51,10 @@ public class ExcelFileWatcher implements FileWatcher {
                 WatchKey watchKey = watchService.poll(10, TimeUnit.MINUTES);
                 if (watchKey != null) {
                     watchKey.pollEvents().stream().forEach(event -> {
-                        System.out.println(event.context());
                         File file = new File(environment.getProperty("file.watcher.directory.path") + "/" + event.context().toString());
                         try {
-                            excelFileUpload.parser(new FileInputStream(file));
+                            fileService.move(file, new File(environment.getProperty("file.output.directory.path") + "/" + event.context().toString()));
                         } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (InvalidFormatException e) {
                             e.printStackTrace();
                         }
                     });
