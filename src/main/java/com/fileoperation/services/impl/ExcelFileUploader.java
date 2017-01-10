@@ -17,7 +17,7 @@ import java.util.Iterator;
  * To change this template use File | Settings | File Templates.
  */
 
-@Service
+@Service("excelFileUploader")
 public class ExcelFileUploader implements FileUploader {
     @Override
     public void parser(InputStream content) throws IOException, InvalidFormatException {
