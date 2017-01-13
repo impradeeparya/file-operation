@@ -58,8 +58,8 @@ public class ExcelFileWatcher implements FileWatcher {
                             e.printStackTrace();
                         }
                     });
+                    watchKey.reset();
                 }
-                watchKey.reset();
             }
 
         } catch (IOException e) {
