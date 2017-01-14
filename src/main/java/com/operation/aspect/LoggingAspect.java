@@ -1,5 +1,6 @@
 package com.operation.aspect;
 
+import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,18 +19,22 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LoggingAspect {
 
+    private static Logger LOGGER = Logger.getLogger(LoggingAspect.class);
+
     @Pointcut("within(com.operation.services.impl.*)")
     public void loggedMethod() {
     }
 
     @Before("loggedMethod()")
     public void beforeLoggedMethod(JoinPoint joinPoint) {
-        System.out.println(joinPoint.getSignature() + " -" + joinPoint.getArgs());
+        LOGGER.debug("<METHOD>");
+        LOGGER.debug(joinPoint.getSignature());
     }
 
     @After("loggedMethod()")
     public void afterLoggedMethod(JoinPoint joinPoint) {
-        System.out.println(joinPoint.getSignature() + " -" + joinPoint.getArgs());
+        LOGGER.debug(joinPoint.getSignature());
+        LOGGER.debug("</METHOD>");
     }
 
 

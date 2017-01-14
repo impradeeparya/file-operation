@@ -28,7 +28,6 @@ public class FileOperationController {
     public void uploadFile(@RequestParam("file") MultipartFile uploadedFile) throws IOException, InvalidFormatException {
 
         if (!uploadedFile.isEmpty()) {
-            System.out.println("Uploading file : " + uploadedFile.getName());
             fileUploader.parser(uploadedFile.getInputStream());
         }
     }
