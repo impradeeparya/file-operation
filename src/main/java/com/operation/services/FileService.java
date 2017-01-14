@@ -1,4 +1,4 @@
-package com.fileoperation.services;
+package com.operation.services;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,4 +12,6 @@ import java.io.IOException;
 public interface FileService {
 
     void move(File sourceFile, File destinationFile) throws IOException;
+
+    void copy(File sourceFile, File destinationFile) throws IOException;
 }

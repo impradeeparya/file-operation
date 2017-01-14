@@ -1,6 +1,6 @@
-package com.fileoperation.services.impl;
+package com.operation.services.impl;
 
-import com.fileoperation.services.FileService;
+import com.operation.services.FileService;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -16,7 +16,12 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void move(File sourceFile, File destinationFile) throws IOException {
+        copy(sourceFile, destinationFile);
+        sourceFile.delete();
+    }
 
+    @Override
+    public void copy(File sourceFile, File destinationFile) throws IOException {
         InputStream inputStream = new FileInputStream(sourceFile);
         OutputStream outStream = new FileOutputStream(destinationFile);
         byte[] buffer = new byte[1024];
@@ -28,7 +33,5 @@ public class FileServiceImpl implements FileService {
 
         inputStream.close();
         outStream.close();
-
-        sourceFile.delete();
     }
 }
