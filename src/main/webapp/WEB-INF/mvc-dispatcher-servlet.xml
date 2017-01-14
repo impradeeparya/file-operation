@@ -24,5 +24,4 @@
         <property name="maxUploadSize" value="100000"/>
     </bean>
 
-
 </beans>

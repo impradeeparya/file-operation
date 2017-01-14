@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
  * Time: 10:30 PM
  */
 
-@Aspect("loggingAspect")
+@Component
+@Aspect
 public class LoggingAspect {
 
     @Pointcut("within(com.operation.services.impl.*)")
